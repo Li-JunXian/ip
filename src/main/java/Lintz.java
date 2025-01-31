@@ -28,12 +28,12 @@ public class Lintz {
     public static void main(String[] args) {
         greet();
 
-        while (true){
+        while (true) {
             String line;
             Scanner input = new Scanner(System.in);
             line = input.nextLine();
 
-            if (line.toLowerCase().equals("bye")){
+            if (line.toLowerCase().equals("bye")) {
                 System.out.println("\t" + horiLine);
                 System.out.println("\t" + "Bye. Hope to see you again soon!");
                 System.out.println("\t" + horiLine);
