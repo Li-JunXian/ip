@@ -1,23 +1,31 @@
+import java.awt.desktop.SystemEventListener;
 import java.util.Scanner;
 
 public class Lintz {
 
-    private static String logo = "\t" + " _       _            _                \n"
+    private static final String logo = "\t" + " _       _            _                \n"
             + "    | |     |_|  _      _| |_   _ _        \n"
             + "    | |     | | | |__  |_   _| |__  |      \n"
             + "    | |___  | | |  _  |  | |__  /  /       \n"
             + "    |_____| |_| |_| |_|  |___/ /____|      \n";
     private static final String horiLine = "\t" + "\u2500".repeat(100);
+
     private static final Task[] taskList = new Task[100];
     private static int taskCount = 0;
 
-    public static void greet(){
+    public static void greet() {
         System.out.println(horiLine);
         System.out.println(logo);
         System.out.println(horiLine);
 
-        System.out.println("\t" + "Hello! I'm Lintz");
-        System.out.println("\t" + "What can I do for you?\n");
+        System.out.println("\t " + "Hello Sir/Ma'am! I'm Lintz");
+        System.out.println("\t " + "As always, pleasure to serve you Sir/Ma'am?\n");
+        System.out.println(horiLine);
+    }
+
+    public static void exit() {
+        System.out.println(horiLine);
+        System.out.println("\t " + "See you Sir/Ma'am! I will be on standby at all times!");
         System.out.println(horiLine);
     }
 
@@ -25,33 +33,62 @@ public class Lintz {
         System.out.println("\t" + input);
     }
 
-    public static void taskListManager(String input) {
-        if (input.equalsIgnoreCase("list")) {
-            System.out.println(horiLine);
-            System.out.println("\t" + "Here are the tasks in your list:");
-            for (int i = 0; i < taskCount; i++) {
+    public static void taskManager(String input) {
+        String firstWord = input.split(" ")[0].toUpperCase();
+        String[] sentenceComponents = input.split("/");
 
-                System.out.println("\t" + (i + 1) + ".[" + taskList[i].getStatusIcon() + "] " + taskList[i].description);
+        switch (firstWord) {
+        case "LIST":
+            System.out.println(horiLine);
+            System.out.println("\t " + "Here are the tasks in your list:");
+            for (int i = 0; i < taskCount; i++) {
+                System.out.println("\t " + (i + 1) + "." + taskList[i].toString());
             }
             System.out.println(horiLine);
-
-        } else if (input.toLowerCase().startsWith("mark")) {
+            break;
+        case "MARK":
             System.out.println(horiLine);
             taskList[Integer.parseInt(input.substring(5)) - 1].markAsDone();
             System.out.println(horiLine);
-
-        } else if (input.toLowerCase().startsWith("unmark")) {
+            break;
+        case "UNMARK":
             System.out.println(horiLine);
             taskList[Integer.parseInt(input.substring(7)) - 1].markAsUndone();
             System.out.println(horiLine);
+            break;
+        case "TODO":
+            taskList[taskCount] = new Todo(input.substring(5));
 
-        } else {
-            taskList[taskCount] = new Task(input);
             System.out.println(horiLine);
-            System.out.print("\t" + "added: ");
-            echo(input);
+            System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
+            System.out.println("\t   " + taskList[taskCount].toString());
+            System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
             System.out.println(horiLine);
-            taskCount += 1;
+
+            taskCount++;
+            break;
+        case "DEADLINE":
+            taskList[taskCount] = new Deadline(sentenceComponents[0].substring(9), sentenceComponents[1].substring(3));
+
+            System.out.println(horiLine);
+            System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
+            System.out.println("\t   " + taskList[taskCount].toString());
+            System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
+            System.out.println(horiLine);
+
+            taskCount++;
+            break;
+        case "EVENT":
+            taskList[taskCount] = new Event(sentenceComponents[0].substring(6), sentenceComponents[1].substring(5), sentenceComponents[2].substring(3));
+
+            System.out.println(horiLine);
+            System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
+            System.out.println("\t   " + taskList[taskCount].toString());
+            System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
+            System.out.println(horiLine);
+
+            taskCount++;
+            break;
         }
     }
 
@@ -64,12 +101,11 @@ public class Lintz {
             line = input.nextLine();
 
             if (line.equalsIgnoreCase("bye")) {
-                System.out.println("\t" + horiLine);
-                System.out.println("\t" + "Bye. Hope to see you again soon!");
-                System.out.println("\t" + horiLine);
+                exit();
                 break;
             }
-            taskListManager(line);
+
+            taskManager(line);
         }
     }
 }
