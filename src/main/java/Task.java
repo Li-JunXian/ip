@@ -16,13 +16,11 @@ public class Task {
         this.isDone = true;
         System.out.println("\t" + "Nice! I've marked this task as done:");
         System.out.println("\t" + "  [" + this.getStatusIcon() + "] " + this.description);
-
     }
 
     public void markAsUndone() {
         this.isDone = false;
         System.out.println("\t" + "OK, I've marked this task as not done yet:");
         System.out.println("\t" + "  [" + this.getStatusIcon() + "] " + this.description);
-
     }
 }
