@@ -29,8 +29,12 @@ public class Lintz {
         System.out.println(horiLine);
     }
 
-    public static void echo(String input) {
-        System.out.println("\t" + input);
+    public static void displayTaskAdded(int taskCount) {
+        System.out.println(horiLine);
+        System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
+        System.out.println("\t   " + taskList[taskCount].toString());
+        System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
+        System.out.println(horiLine);
     }
 
     public static void taskManager(String input) {
@@ -58,35 +62,17 @@ public class Lintz {
             break;
         case "TODO":
             taskList[taskCount] = new Todo(input.substring(5));
-
-            System.out.println(horiLine);
-            System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
-            System.out.println("\t   " + taskList[taskCount].toString());
-            System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
-            System.out.println(horiLine);
-
+            displayTaskAdded(taskCount);
             taskCount++;
             break;
         case "DEADLINE":
             taskList[taskCount] = new Deadline(sentenceComponents[0].substring(9), sentenceComponents[1].substring(3));
-
-            System.out.println(horiLine);
-            System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
-            System.out.println("\t   " + taskList[taskCount].toString());
-            System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
-            System.out.println(horiLine);
-
+            displayTaskAdded(taskCount);
             taskCount++;
             break;
         case "EVENT":
             taskList[taskCount] = new Event(sentenceComponents[0].substring(6), sentenceComponents[1].substring(5), sentenceComponents[2].substring(3));
-
-            System.out.println(horiLine);
-            System.out.println("\t " + "Copy Sir/Ma'am, I've added this task: ");
-            System.out.println("\t   " + taskList[taskCount].toString());
-            System.out.println("\t " + "You have now " + (taskCount + 1) + " tasks Sir/Ma'am." + "\n");
-            System.out.println(horiLine);
-
+            displayTaskAdded(taskCount);
             taskCount++;
             break;
         }
