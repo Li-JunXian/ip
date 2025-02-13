@@ -8,7 +8,7 @@ public class Lintz {
             + "    | |     | | | |__  |_   _| |__  |      \n"
             + "    | |___  | | |  _  |  | |__  /  /       \n"
             + "    |_____| |_| |_| |_|  |___/ /____|      \n";
-    private static final String horiLine = "\t" + "\u2500".repeat(100);
+    private static final String horiLine = "\t" + "\u2500".repeat(150);
 
     private static final Task[] taskList = new Task[100];
     private static int taskCount = 0;
@@ -41,40 +41,52 @@ public class Lintz {
         String firstWord = input.split(" ")[0].toUpperCase();
         String[] sentenceComponents = input.split("/");
 
-        switch (firstWord) {
-        case "LIST":
-            System.out.println(horiLine);
-            System.out.println("\t " + "Here are the tasks in your list:");
-            for (int i = 0; i < taskCount; i++) {
-                System.out.println("\t " + (i + 1) + "." + taskList[i].toString());
+        try {
+            switch (firstWord) {
+            case "LIST":
+                System.out.println(horiLine);
+                System.out.println("\t " + "Here are the tasks in your list:");
+                for (int i = 0; i < taskCount; i++) {
+                    System.out.println("\t " + (i + 1) + "." + taskList[i].toString());
+                }
+                System.out.println(horiLine);
+                break;
+            case "MARK":
+                System.out.println(horiLine);
+                taskList[Integer.parseInt(input.substring(5)) - 1].markAsDone();
+                System.out.println(horiLine);
+                break;
+            case "UNMARK":
+                System.out.println(horiLine);
+                taskList[Integer.parseInt(input.substring(7)) - 1].markAsUndone();
+                System.out.println(horiLine);
+                break;
+            case "TODO":
+                taskList[taskCount] = new Todo(input.substring(5));
+                displayTaskAdded(taskCount);
+                taskCount++;
+                break;
+            case "DEADLINE":
+                taskList[taskCount] = new Deadline(sentenceComponents[0].substring(9), sentenceComponents[1].substring(3));
+                displayTaskAdded(taskCount);
+                taskCount++;
+                break;
+            case "EVENT":
+                taskList[taskCount] = new Event(sentenceComponents[0].substring(6), sentenceComponents[1].substring(5), sentenceComponents[2].substring(3));
+                displayTaskAdded(taskCount);
+                taskCount++;
+                break;
+            default:
+                throw new IllegalInputException();
             }
+        } catch (IndexOutOfBoundsException e) {
             System.out.println(horiLine);
-            break;
-        case "MARK":
+            System.out.println("\t Sir/Ma'am, I've captured incomplete command, please be so kind to elaborate ;-)");
             System.out.println(horiLine);
-            taskList[Integer.parseInt(input.substring(5)) - 1].markAsDone();
+        } catch (IllegalInputException e) {
             System.out.println(horiLine);
-            break;
-        case "UNMARK":
+            System.out.println("\t Sir/Ma'am, I'm sorry for not understanding but might I trouble you to input your command again? Thank you Sir/Ma'am ;-D");
             System.out.println(horiLine);
-            taskList[Integer.parseInt(input.substring(7)) - 1].markAsUndone();
-            System.out.println(horiLine);
-            break;
-        case "TODO":
-            taskList[taskCount] = new Todo(input.substring(5));
-            displayTaskAdded(taskCount);
-            taskCount++;
-            break;
-        case "DEADLINE":
-            taskList[taskCount] = new Deadline(sentenceComponents[0].substring(9), sentenceComponents[1].substring(3));
-            displayTaskAdded(taskCount);
-            taskCount++;
-            break;
-        case "EVENT":
-            taskList[taskCount] = new Event(sentenceComponents[0].substring(6), sentenceComponents[1].substring(5), sentenceComponents[2].substring(3));
-            displayTaskAdded(taskCount);
-            taskCount++;
-            break;
         }
     }
 
