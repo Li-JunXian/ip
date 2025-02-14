@@ -85,7 +85,7 @@ public class Lintz {
             System.out.println(horiLine);
         } catch (IllegalInputException e) {
             System.out.println(horiLine);
-            System.out.println("\t Sir/Ma'am, I'm sorry for not understanding but might I trouble you to input your command again? Thank you Sir/Ma'am ;-D");
+            System.out.println("\t Apologies Sir/Ma'am, might I trouble you to input your command again for clarification? Thank you Sir/Ma'am ;-D");
             System.out.println(horiLine);
         }
     }
