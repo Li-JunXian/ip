@@ -19,7 +19,7 @@ public class Lintz {
         System.out.println(horiLine);
 
         System.out.println("\t " + "Hello Sir/Ma'am! I'm Lintz");
-        System.out.println("\t " + "As always, pleasure to serve you Sir/Ma'am?\n");
+        System.out.println("\t " + "As always, pleasure to serve you Sir/Ma'am!\n");
         System.out.println(horiLine);
     }
 
@@ -37,7 +37,7 @@ public class Lintz {
         System.out.println(horiLine);
     }
 
-    public static void taskManager(String input) {
+    public static void taskManager(String input) throws IllegalInputException {
         String firstWord = input.split(" ")[0].toUpperCase();
         String[] sentenceComponents = input.split("/");
 
@@ -81,7 +81,7 @@ public class Lintz {
             }
         } catch (IndexOutOfBoundsException e) {
             System.out.println(horiLine);
-            System.out.println("\t Sir/Ma'am, I've captured incomplete command, please be so kind to elaborate ;-)");
+            System.out.println("\t Hi Sir/Ma'am, I've captured incomplete command, please be so kind to elaborate ;-)");
             System.out.println(horiLine);
         } catch (IllegalInputException e) {
             System.out.println(horiLine);
@@ -90,7 +90,7 @@ public class Lintz {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalInputException {
         greet();
 
         while (true) {
