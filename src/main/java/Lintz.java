@@ -102,7 +102,7 @@ public class Lintz {
                 exit();
                 break;
             }
-
+            
             taskManager(line);
         }
     }
