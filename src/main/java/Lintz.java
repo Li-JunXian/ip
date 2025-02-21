@@ -56,23 +56,28 @@ public class Lintz {
             case "MARK":
                 System.out.println(horiLine);
                 tasks.get(Integer.parseInt(input.substring(5)) - 1).markAsDone();
+                FileWrite.saveTasks(tasks);
                 System.out.println(horiLine + "\n");
                 break;
             case "UNMARK":
                 System.out.println(horiLine);
                 tasks.get(Integer.parseInt(input.substring(7)) - 1).markAsUndone();
+                FileWrite.saveTasks(tasks);
                 System.out.println(horiLine + "\n");
                 break;
             case "TODO":
                 tasks.add(new Todo(input.substring(5)));
+                FileWrite.saveTasks(tasks);
                 displayTaskAdded(tasks.size() - 1);
                 break;
             case "DEADLINE":
                 tasks.add(new Deadline(sentenceComponents[0].substring(9), sentenceComponents[1].substring(3)));
+                FileWrite.saveTasks(tasks);
                 displayTaskAdded(tasks.size() - 1);
                 break;
             case "EVENT":
                 tasks.add(new Event(sentenceComponents[0].substring(6), sentenceComponents[1].substring(5), sentenceComponents[2].substring(3)));
+                FileWrite.saveTasks(tasks);
                 displayTaskAdded(tasks.size() - 1);
                 break;
             case "DELETE":
@@ -82,6 +87,7 @@ public class Lintz {
                 System.out.println("\t " + "You have now " + (tasks.size() - 1) + " tasks Sir/Ma'am." + "\n");
                 System.out.println(horiLine + "\n");
                 tasks.remove(Integer.parseInt(input.substring(7)) - 1);
+                FileWrite.saveTasks(tasks);
                 break;
             default:
                 throw new IllegalInputException();
@@ -101,6 +107,7 @@ public class Lintz {
         greet();
 
         while (true) {
+            tasks = FileWrite.loadTasks();
             String line;
             Scanner input = new Scanner(System.in);
             line = input.nextLine();
