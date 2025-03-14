@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Command {
     private String command;
     private String arguments;
@@ -94,6 +96,14 @@ public class Command {
                     ui.displayNoTasksMessage();
                 }
             }
+            break;
+        case "FIND":
+            if (arguments.isEmpty()) {
+                throw new IndexOutOfBoundsException();
+            }
+            String keyword = this.arguments;
+            ArrayList<Task> matchingTasks = taskList.findTasks(keyword);
+            ui.displayMatchingTasks(matchingTasks);
             break;
         default:
             throw new IllegalInputException();
