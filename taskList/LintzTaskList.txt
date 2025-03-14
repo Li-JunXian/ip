@@ -1,7 +1,13 @@
 [T][X] borrow books
 [T][ ] read books
 [T][X] buy groceries (rice)
-[T][X] buy groceries (meat)
-[T][X] buy groceries (fish)
+[T][ ] buy groceries (meat)
+[T][ ] buy groceries (fish)
 [D][ ] return book (by: tomorrow)
 [E][ ] supermarket groceries sales (from: tomorrow to: tomorrow evening)
+[T][ ] A
+[D][ ] B (by: 1)
+[T][ ] a
+[T][ ] b
+[E][ ] D (from: 1 to: 2)
+[D][ ] E (by: 2)

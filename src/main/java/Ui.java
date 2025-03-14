@@ -95,8 +95,8 @@ public class Ui {
      */
     public void displayTaskMarked(Task task) {
         System.out.println(horiLine);
-        System.out.println("\tCongratulations Sir/Ma'am on completing this task:");
-        System.out.println("\t  " + task.toString());
+        System.out.println("\t Congratulations Sir/Ma'am on completing this task:");
+        System.out.println("\t   " + task.toString());
         System.out.println(horiLine + "\n");
     }
 
@@ -107,8 +107,8 @@ public class Ui {
      */
     public void displayTaskUnmarked(Task task) {
         System.out.println(horiLine);
-        System.out.println("\tNo worries Sir/Ma'am, we've got ample of time to complete this task:");
-        System.out.println("\t " + task.toString());
+        System.out.println("\t No worries Sir/Ma'am, we've got ample of time to complete this task:");
+        System.out.println("\t   " + task.toString());
         System.out.println(horiLine + "\n");
     }
 
@@ -131,9 +131,9 @@ public class Ui {
                 "\t \t2. deadline <TASK_DESCRIPTION> /by <DATE_AND/OR_TIME>\n" +
                 "\t \t3. event <TASKS_DESCRIPTION> /from <DATE_AND/OR_TIME> /to <DATE_AND/OR_TIME>\n" +
                 "\t \t4. list\n" +
-                "\t \t5. mark <INDEX_OF_TASK>\n" +
-                "\t \t6. unmark <INDEX_OF_TASK>\n" +
-                "\t \t7. delete <INDEX_OF_TASK>\n" +
+                "\t \t5. mark <TASK_INDEX>\n" +
+                "\t \t6. unmark <TASK_INDEX>\n" +
+                "\t \t7. delete <TASK_INDEX>\n" +
                 "\t \t8. find <KEYWORD>\n");
         System.out.println(horiLine + "\n");
     }
