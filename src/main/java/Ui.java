@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class Ui {
     private static final String logo =
             "\t" + " _       _            _                \n"
-                    + "        | |     |_|  _      _| |_   _ _        \n"
-                    + "        | |     | | | |__  |_   _| |__  |      \n"
-                    + "        | |___  | | |  _  |  | |__  /  /       \n"
-                    + "        |_____| |_| |_| |_|  |___/ /____|      \n";
+                    + "    | |     |_|  _      _| |_   _ _        \n"
+                    + "    | |     | | | |__  |_   _| |__  |      \n"
+                    + "    | |___  | | |  _  |  | |__  /  /       \n"
+                    + "    |_____| |_| |_| |_|  |___/ /____|      \n";
     private static final String horiLine = "\t" + "\u2500".repeat(150);
 
     private Scanner scanner;
