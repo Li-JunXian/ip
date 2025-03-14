@@ -1,22 +1,51 @@
 import java.util.ArrayList;
 
+/**
+ * Represents a user command with its associated arguments.
+ */
+
 public class Command {
     private String command;
     private String arguments;
 
+    /**
+     * Constructs a Command with the given command and arguments.
+     *
+     * @param command   The command type (e.g., "todo", "deadline").
+     * @param arguments The arguments associated with the command.
+     */
     public Command(String command, String arguments) {
         this.command = command;
         this.arguments = arguments;
     }
 
+    /**
+     * Returns the command type.
+     *
+     * @return The command type.
+     */
     public String getCommand() {
         return command;
     }
 
+    /**
+     * Returns the command arguments.
+     *
+     * @return The command arguments.
+     */
     public String getArguments() {
         return arguments;
     }
 
+    /**
+     * Executes the command based on its type.
+     *
+     * @param taskList The TaskList to operate on.
+     * @param ui       The Ui for displaying messages.
+     * @param storage  The Storage for storing and saving tasks.
+     * @throws IllegalInputException   If the command is invalid.
+     * @throws IndexOutOfBoundsException If the command arguments are invalid.
+     */
     public void execute(TaskList taskList, Ui ui, Storage storage) throws IllegalInputException, IndexOutOfBoundsException {
         switch (this.command) {
         case "LIST":

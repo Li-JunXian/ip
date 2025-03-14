@@ -1,4 +1,13 @@
+/**
+ * Parses and interpret user input and task strings into commands and tasks to be executed.
+ */
 public class Parser {
+    /**
+     * Parses a task string into a Task object.
+     *
+     * @param taskString The string representation of the task.
+     * @return The parsed Task object.
+     */
     public static Task parseTask(String taskString) {
         char type = taskString.charAt(1);
         boolean isDone = taskString.charAt(4) == 'X';
@@ -22,6 +31,12 @@ public class Parser {
         return task;
     }
 
+    /**
+     * Parses a user input string into a Command object.
+     *
+     * @param input The user's input string.
+     * @return The parsed Command object.
+     */
     public static Command parseCommand(String input) {
         String[] parts = input.split(" ", 2);
         String command = parts[0].toUpperCase();

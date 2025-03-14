@@ -1,9 +1,15 @@
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Handles loading and saving tasks to a file.
+ */
 public class Storage {
     public static final String FILE_PATH = "./taskList/LintzTaskList.txt";
 
+    /**
+     * Ensures that the file and its parent directory exist. If not, create them.
+     */
     public void ensureFileExists() {
         try {
             File file = new File(FILE_PATH);
@@ -16,6 +22,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Saves the list of tasks to the file.
+     *
+     * @param tasks The list of tasks to save.
+     */
     public void saveTasks(ArrayList<Task> tasks) {
         ensureFileExists();
         try (FileWriter fw = new FileWriter(FILE_PATH)) {
@@ -27,6 +38,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads the list of tasks from the file.
+     *
+     * @return The list of tasks loaded from the file.
+     */
     public ArrayList<Task> loadTasks() {
         ensureFileExists();
         ArrayList<Task> tasks = new ArrayList<>();
