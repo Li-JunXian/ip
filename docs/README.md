@@ -17,7 +17,7 @@
 
 
 ## Introduction
-Lintz is a simple and efficient task management chatbot designed to help you keep track of your tasks. Whether it's a to-do, a deadline, or an event, Lintz will help you stay organized and on top of your responsibilities.
+Lintz is a simple and efficient task management ChatBot designed to help you keep track of your tasks. Whether it's a to-do, a deadline, or an event, Lintz will help you stay organized and on top of your responsibilities.
 
 ---
 
