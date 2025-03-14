@@ -1,11 +1,10 @@
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileWrite {
-
+public class Storage {
     public static final String FILE_PATH = "./taskList/LintzTaskList.txt";
 
-    public static void ensureFileExists() {
+    public void ensureFileExists() {
         try {
             File file = new File(FILE_PATH);
             file.getParentFile().mkdirs();
@@ -17,7 +16,7 @@ public class FileWrite {
         }
     }
 
-    public static void saveTasks(ArrayList<Task> tasks) {
+    public void saveTasks(ArrayList<Task> tasks) {
         ensureFileExists();
         try (FileWriter fw = new FileWriter(FILE_PATH)) {
             for (Task task : tasks) {
@@ -28,13 +27,13 @@ public class FileWrite {
         }
     }
 
-    public static ArrayList<Task> loadTasks() {
+    public ArrayList<Task> loadTasks() {
         ensureFileExists();
         ArrayList<Task> tasks = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
-                tasks.add(parseTask(line));
+                tasks.add(Parser.parseTask(line));
             }
         } catch (IOException e) {
             System.out.println("\tError loading tasks: " + e.getMessage());
@@ -42,26 +41,4 @@ public class FileWrite {
         return tasks;
     }
 
-    private static Task parseTask(String taskString) {
-        char type = taskString.charAt(1);
-        boolean isDone = taskString.charAt(4) == 'X';
-        String details = taskString.substring(7);
-
-        Task task;
-        if (type == 'T') {
-            task = new Todo(details);
-        } else if (type == 'D') {
-            String[] parts = details.split("\\(by: ");
-            task = new Deadline(parts[0].trim(), parts[1].replace(")", ""));
-        } else { // type == 'E'
-            String[] parts = details.split("\\(from: ");
-            String[] times = parts[1].split(" to: ");
-            task = new Event(parts[0].trim(), times[0], times[1].replace(")", ""));
-        }
-
-        if (isDone) {
-            task.isDone = true;
-        }
-        return task;
-    }
 }

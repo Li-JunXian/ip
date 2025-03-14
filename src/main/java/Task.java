@@ -13,14 +13,10 @@ public class Task {
 
     public void markAsDone() {
         this.isDone = true;
-        System.out.println("\t" + "Congratulations Sir/Ma'am on completing this task:");
-        System.out.println("\t" + "  " + this + "\n");
     }
 
     public void markAsUndone() {
         this.isDone = false;
-        System.out.println("\t" + "No worries Sir/Ma'am, we've got ample of time to complete this task:");
-        System.out.println("\t" + " " + this + "\n");
     }
 
     public String toString() {
@@ -30,4 +26,5 @@ public class Task {
     public boolean isDone() {
         return isDone;
     }
+
 }
