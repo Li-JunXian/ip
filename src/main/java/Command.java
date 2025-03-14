@@ -3,6 +3,7 @@ import java.util.ArrayList;
 /**
  * Represents a user command with its associated arguments.
  */
+
 public class Command {
     private String command;
     private String arguments;

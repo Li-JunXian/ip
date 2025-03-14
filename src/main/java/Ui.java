@@ -147,6 +147,31 @@ public class Ui {
         System.out.println(horiLine + "\n");
     }
 
+
+    /**
+     * Displays a confirmation message displaying "[X]" when a task is marked as done.
+     *
+     * @param task The task that was marked as done.
+     */
+    public void displayTaskMarked(Task task) {
+        System.out.println(horiLine);
+        System.out.println("\tCongratulations Sir/Ma'am on completing this task:");
+        System.out.println("\t  " + task.toString());
+        System.out.println(horiLine + "\n");
+    }
+
+    /**
+     * Displays a confirmation message displaying "[ ]" when a task is marked as undone.
+     *
+     * @param task The task that was marked as undone.
+     */
+    public void displayTaskUnmarked(Task task) {
+        System.out.println(horiLine);
+        System.out.println("\tNo worries Sir/Ma'am, we've got ample of time to complete this task:");
+        System.out.println("\t " + task.toString());
+        System.out.println(horiLine + "\n");
+    }
+
     /**
      * Displays the list of tasks that match the given keyword.
      *
@@ -157,7 +182,8 @@ public class Ui {
         if (matchingTasks.isEmpty()) {
             System.out.println("\t " + "No tasks found matching your search, Sir/Ma'am.");
         } else {
-            System.out.println("\t " + "Here are the matching tasks in your list:");
+            System.out.println("\t " + "Here are the matching tasks in your list, Sir/Ma'am:");
+
             int idx = 0;
             for (Task task : matchingTasks) {
                 System.out.println("\t " + (idx + 1) + "." + task.toString());
