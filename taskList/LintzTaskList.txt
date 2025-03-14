@@ -3,5 +3,5 @@
 [T][X] buy groceries (rice)
 [T][X] buy groceries (meat)
 [T][X] buy groceries (fish)
-[D][ ] return book  (by: tomorrow)
-[E][ ] supermarket groceries sales  (from: tomorrow to: tomorrow evening)
+[D][ ] return book (by: tomorrow)
+[E][ ] supermarket groceries sales (from: tomorrow to: tomorrow evening)
